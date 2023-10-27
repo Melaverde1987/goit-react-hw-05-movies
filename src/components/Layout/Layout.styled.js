@@ -5,6 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   gap: ${p => p.theme.spacing(6)};
   padding: ${p => p.theme.spacing(4)};
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 `;
