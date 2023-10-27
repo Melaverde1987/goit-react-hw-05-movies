@@ -50,3 +50,16 @@ export const fetchCredits = async movieId => {
   );
   return response.data;
 };
+
+export const fetchReviews = async movieId => {
+  const params = new URLSearchParams({
+    language: 'en-US',
+    movie_id: movieId,
+    page: 1,
+  });
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?${params}`,
+    options
+  );
+  return response.data;
+};

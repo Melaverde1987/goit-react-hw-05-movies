@@ -1,4 +1,4 @@
-import { fetchMovieById, fetchCredits } from 'api';
+import { fetchMovieById } from 'api';
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export default function MoviesPage() {
   const params = useParams();
   const [movie, setMovie] = useState();
-  const [credits, setCredits] = useState();
 
   useEffect(() => {
     async function getMovie() {
@@ -19,18 +18,6 @@ export default function MoviesPage() {
     getMovie();
   }, [params.movieId]);
 
-  useEffect(() => {
-    async function getCredits() {
-      try {
-        const fetchedCredits = await fetchCredits(params.movieId);
-        setCredits(fetchedCredits);
-      } catch (error) {}
-    }
-
-    getCredits();
-  }, [params.movieId]);
-
-  console.log(credits);
   return (
     <div>
       <h1>Movie Details</h1>
@@ -43,6 +30,8 @@ export default function MoviesPage() {
           <p>
             {movie.title} {movie.release_date}
           </p>
+          <p>Overview:</p>
+          <p>{movie.overview}</p>
           <p>Genres:</p>
           <ul>
             {movie.genres.map(item => (
@@ -50,7 +39,9 @@ export default function MoviesPage() {
             ))}
           </ul>
           <p>Additional information</p>
-          <Link to={`/movies/${movie.id}/cast`}>Cast</Link>
+          <Link to={`/movies/${movie.id}/cast`} state={{ id: movie.id }}>
+            Cast
+          </Link>
           <Link to={`/movies/${movie.id}/reviews`}>Reviews</Link>
         </>
       )}

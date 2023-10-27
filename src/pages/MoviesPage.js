@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Bars } from 'react-loader-spinner';
 import toast, { Toaster } from 'react-hot-toast';
 import { searchMovies } from 'api';
@@ -10,6 +11,9 @@ export default function MoviesPage() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const title = searchParams.get('title');
 
   useEffect(() => {
     if (query === '') {
@@ -37,6 +41,7 @@ export default function MoviesPage() {
   const handlerSubmit = evt => {
     setMovies([]);
     setQuery(evt.search.trim());
+    setSearchParams({ title: evt.search.trim() });
   };
 
   console.log(movies);

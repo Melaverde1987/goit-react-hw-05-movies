@@ -1,4 +1,6 @@
 import { Layout } from './Layout/Layout';
+import { Credits } from './Credits/Credits';
+import { Reviews } from './Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from 'pages/HomePage';
 import MoviesPage from 'pages/MoviesPage';
@@ -12,8 +14,8 @@ export const App = () => {
         <Route index element={<HomePage />} />
         <Route path="movies" element={<MoviesPage />} />
         <Route path="movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<div>cast result</div>}></Route>
-          <Route path="reviews" element={<div>reviews result</div>}></Route>
+          <Route path="cast" element={<Credits />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
