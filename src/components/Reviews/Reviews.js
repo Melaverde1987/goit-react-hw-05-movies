@@ -20,14 +20,14 @@ export const Reviews = () => {
   console.log('reviews', reviews);
   return (
     <>
-      <p>Reviews Result</p>
-
-      {reviews.map(item => (
-        <li key={item.id}>
-          <p>Author: {item.author}</p>
-          <p>{item.content}</p>
-        </li>
-      ))}
+      <ul>
+        {reviews.map(item => (
+          <li key={item.id}>
+            <p>Author: {item.author}</p>
+            <p>{item.content}</p>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

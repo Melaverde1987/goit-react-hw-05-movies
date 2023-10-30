@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a:hover,
     a:focus {
-        color: var(--colorPrimary);
+        color: ${p => p.theme.colors.primaryColor};
     }
 
     button {
@@ -87,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-        margin: 20px;
+        //margin: 20px;
     }
 
     .card {

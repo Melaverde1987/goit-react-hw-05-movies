@@ -16,14 +16,14 @@ export default function MoviesPage() {
   const title = searchParams.get('title');
 
   useEffect(() => {
-    if (query === '') {
+    if (!title || title === '') {
       return;
     }
     async function getMovies() {
       try {
         setLoading(true);
         setError(false);
-        const allMovies = await searchMovies(query);
+        const allMovies = await searchMovies(title);
         setMovies(allMovies.results);
         if (allMovies.results < 1) {
           toast.error('There are no entries. Try again');
@@ -36,19 +36,27 @@ export default function MoviesPage() {
     }
 
     getMovies();
-  }, [query]);
+  }, [title]);
 
   const handlerSubmit = evt => {
-    setMovies([]);
+    if (title !== evt.search.trim()) {
+      setMovies([]);
+    }
     setQuery(evt.search.trim());
     setSearchParams({ title: evt.search.trim() });
   };
 
-  console.log(movies);
+  const handlerChange = evt => {
+    setSearchParams({ title: evt.target.value.trim() });
+  };
+
+  console.log('title', title);
+  console.log('query', query);
+
   return (
     <div>
       <h1>All movies</h1>
-      <Searchbar onSubmit={handlerSubmit} />
+      <Searchbar onSubmit={handlerSubmit} handleChange={handlerChange} />
       {loading && (
         <Bars
           height="80"

@@ -1,15 +1,15 @@
-import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCredits } from 'api';
 
 export const Credits = () => {
-  const location = useLocation();
   const params = useParams();
   const [credits, setCredits] = useState([]);
-  //console.log('location', location);
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
+    if (!params.movieId) return;
     async function getCredits() {
       try {
         const fetchedCredits = await fetchCredits(params.movieId);
@@ -23,16 +23,18 @@ export const Credits = () => {
   console.log('credits', credits);
   return (
     <>
-      <p>Credits Result {location.state.id}</p>
       <ul>
         {credits.map(item => (
           <li key={item.id}>
-            {item.profile_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/` + item.profile_path}
-                alt={item.name}
-              />
-            )}
+            <img
+              src={
+                item.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${item.profile_path}`
+                  : defaultImg
+              }
+              alt={item.name}
+            />
+
             <p>{item.name}</p>
             <p>{item.character}</p>
           </li>

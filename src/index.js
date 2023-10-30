@@ -10,6 +10,7 @@ const theme = {
     white: '#fff',
     black: '#212121',
     error: 'red',
+    primaryColor: '#6d9510',
   },
   radii: {
     sm: '4px',

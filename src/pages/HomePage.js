@@ -28,7 +28,7 @@ export default function HomePage() {
 
   console.log(movies);
   return (
-    <div>
+    <>
       <h1>Thrending today</h1>
       {loading && (
         <Bars
@@ -45,6 +45,6 @@ export default function HomePage() {
       ) : (
         <p>Error! Please reload this page!</p>
       )}
-    </div>
+    </>
   );
 }

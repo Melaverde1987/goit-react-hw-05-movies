@@ -1,13 +1,17 @@
 import { fetchMovieById } from 'api';
-import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { BackLink } from 'components/BackLink/BackLink';
 
-export default function MoviesPage() {
+export default function MovieDetailsPage() {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const params = useParams();
   const [movie, setMovie] = useState();
 
   useEffect(() => {
+    if (!params.movieId) return;
     async function getMovie() {
       try {
         const fetchedMovie = await fetchMovieById(params.movieId);
@@ -21,6 +25,7 @@ export default function MoviesPage() {
   return (
     <div>
       <h1>Movie Details</h1>
+      <BackLink to={backLinkLocationRef.current}>Back</BackLink>
       {movie && (
         <>
           <img
@@ -39,9 +44,7 @@ export default function MoviesPage() {
             ))}
           </ul>
           <p>Additional information</p>
-          <Link to={`/movies/${movie.id}/cast`} state={{ id: movie.id }}>
-            Cast
-          </Link>
+          <Link to={`/movies/${movie.id}/cast`}>Cast</Link>
           <Link to={`/movies/${movie.id}/reviews`}>Reviews</Link>
         </>
       )}

@@ -6,7 +6,7 @@ const SignupSchema = Yup.object().shape({
   search: Yup.string().required('This field is empty. Write something'),
 });
 
-export const Searchbar = ({ onSubmit }) => {
+export const Searchbar = ({ onSubmit, handleChange }) => {
   return (
     <SearchForm>
       <div className="wrapper">
@@ -17,6 +17,9 @@ export const Searchbar = ({ onSubmit }) => {
           validationSchema={SignupSchema}
           onSubmit={values => {
             onSubmit(values);
+          }}
+          onChange={values => {
+            handleChange(values);
           }}
         >
           <Form>
@@ -29,6 +32,8 @@ export const Searchbar = ({ onSubmit }) => {
                 className="input"
                 type="text"
                 placeholder="Search images and photos"
+                //value={title}
+                //onChange={handleChange}
               />
               <ErrMessage name="search" component="div" />
               <button type="submit" className="button">
