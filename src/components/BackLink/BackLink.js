@@ -1,11 +1,11 @@
 import { BsArrowLeft } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { ArrowLink } from './BackLink.styled';
 
 export const BackLink = ({ to = '/', children }) => {
   return (
-    <Link to={to}>
+    <ArrowLink to={to}>
       <BsArrowLeft />
       {children}
-    </Link>
+    </ArrowLink>
   );
 };

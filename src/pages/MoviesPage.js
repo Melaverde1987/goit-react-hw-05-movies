@@ -8,7 +8,7 @@ import { Searchbar } from 'components/Searchbar/Searchbar';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const [, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -50,11 +50,8 @@ export default function MoviesPage() {
     setSearchParams({ title: evt.target.value.trim() });
   };
 
-  console.log('title', title);
-  console.log('query', query);
-
   return (
-    <div>
+    <>
       <h1>All movies</h1>
       <Searchbar onSubmit={handlerSubmit} handleChange={handlerChange} />
       {loading && (
@@ -69,6 +66,6 @@ export default function MoviesPage() {
       {error && <p>Error! Please reload this page!</p>}
       {movies.length > 0 && <MovieList items={movies} />}
       <Toaster position="top-right" />
-    </div>
+    </>
   );
 }

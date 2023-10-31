@@ -18,6 +18,7 @@ const theme = {
     lg: '12px',
   },
   spacing: value => `${value * 4}px`,
+  cubicTransition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

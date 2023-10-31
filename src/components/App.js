@@ -2,10 +2,17 @@ import { Layout } from './Layout/Layout';
 import { Credits } from './Credits/Credits';
 import { Reviews } from './Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from 'pages/HomePage';
-import MoviesPage from 'pages/MoviesPage';
-import MovieDetailsPage from 'pages/MovieDetailsPage';
-import NotFoundPage from 'pages/NotFoundPage';
+import { lazy } from 'react';
+
+//import HomePage from 'pages/HomePage';
+//import MoviesPage from 'pages/MoviesPage';
+//import MovieDetailsPage from 'pages/MovieDetailsPage';
+//import NotFoundPage from 'pages/NotFoundPage';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const MoviesPage = lazy(() => import('pages/MoviesPage'));
+const MovieDetailsPage = lazy(() => import('pages/MovieDetailsPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 export const App = () => {
   return (

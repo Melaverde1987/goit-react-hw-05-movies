@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
     p {
         margin-top: 0;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.8em;
     }
 
     ul {
@@ -71,11 +71,6 @@ export const GlobalStyle = createGlobalStyle`
         text-transform: uppercase;
     }
 
-    input:focus,
-    textarea:focus {
-        outline: 1px solid var(--colorPrimary);
-    }
-
     body {
         font-family: var(--font-primary);
         font-size: 16px;
@@ -90,58 +85,8 @@ export const GlobalStyle = createGlobalStyle`
         //margin: 20px;
     }
 
-    .card {
-        max-width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .btn {
-    padding: 8px 15px;
-    border-radius: 5px;
-    }
-
-    .btn.btn-primary {
-    background-color: var(--colorPrimary);
-    color: var(--white);
-    transition: box-shadow var(--cubic-transition),
-        background-color var(--cubic-transition);
-    }
-
-    .btn.btn-primary:hover {
-    box-shadow: rgba(0, 0, 0, 0.48) 0 4px 12px;
-    }
-
-    .btn.btn-primary:focus {
-    background-color: var(--colorPrimaryDark);
-    }
-
-    .btn.btn-outline {
-    border: 1px solid var(--colorPrimary);
-    color: var(--colorPrimary);
-    transition: box-shadow var(--cubic-transition), border var(--cubic-transition),
-        color var(--cubic-transition);
-    }
-
-    .btn.btn-outline:hover {
-        box-shadow: rgba(0, 0, 0, 0.48) 0 4px 12px;
-    }
-
-    .btn.btn-outline:focus {
-        border: 1px solid var(--colorPrimaryDark);
-        color: var(--colorPrimaryDark);
-    }
-
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-    }
-
     label {
         margin-bottom: 5px;
-        color: var(--colorPrimary);
         font-weight: 600;
     }
 
@@ -149,6 +94,20 @@ export const GlobalStyle = createGlobalStyle`
         padding: 5px 10px;
         border-radius: 5px;
         border: 1px solid var(--black);
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
     }
 
     :root {

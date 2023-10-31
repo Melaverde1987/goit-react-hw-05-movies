@@ -1,17 +1,31 @@
-import { Container } from './Layout.styled';
+import { Container, Header, HeaderTop } from './Layout.styled';
 import { Outlet } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
+import { GiPopcorn } from 'react-icons/gi';
+import { Suspense } from 'react';
 
 export const Layout = () => {
   return (
     <>
-      <Container>
-        <header>
+      <Header>
+        <HeaderTop>
+          <Container>
+            <div className="logoContainer">
+              <GiPopcorn />
+              <p>Best movie finder ever</p>
+            </div>
+          </Container>
+        </HeaderTop>
+
+        <Container>
           <Navigation />
-        </header>
-      </Container>
+        </Container>
+      </Header>
+
       <Container>
-        <Outlet />
+        <Suspense fallback={'LOADING PAGE...'}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );

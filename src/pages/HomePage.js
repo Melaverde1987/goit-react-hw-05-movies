@@ -15,7 +15,6 @@ export default function HomePage() {
         setError(false);
         const allMovies = await fetchMovies();
         setMovies(allMovies.results);
-        console.log(allMovies.results);
       } catch (error) {
         setError(true);
       } finally {
@@ -26,7 +25,7 @@ export default function HomePage() {
     getMovies();
   }, []);
 
-  console.log(movies);
+  //console.log(movies);
   return (
     <>
       <h1>Thrending today</h1>
