@@ -4,7 +4,7 @@ import { Bars } from 'react-loader-spinner';
 import { fetchReviews } from 'api';
 import { ReviewCard, Error } from './Reviews.styled';
 
-export default function Reviews() {
+const Reviews = () => {
   const params = useParams();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -53,4 +53,6 @@ export default function Reviews() {
       )}
     </>
   );
-}
+};
+
+export default Reviews;

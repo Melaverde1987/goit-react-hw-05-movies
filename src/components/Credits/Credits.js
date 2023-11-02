@@ -4,7 +4,7 @@ import { Bars } from 'react-loader-spinner';
 import { fetchCredits } from 'api';
 import { CastCard, Error } from './Credits.styled';
 
-export default function Credits() {
+const Credits = () => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const [credits, setCredits] = useState([]);
@@ -66,4 +66,6 @@ export default function Credits() {
       )}
     </>
   );
-}
+};
+
+export default Credits;
