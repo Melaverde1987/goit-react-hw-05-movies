@@ -1,7 +1,6 @@
 import { fetchMovieById } from 'api';
 import { useEffect, useState, useRef } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
-//import { Link } from 'react-router-dom';
 import { AddInfo } from 'components/AddInfo/AddInfo';
 import { BackLink } from 'components/BackLink/BackLink';
 import { MovieCard } from 'components/MovieCard/MovieCard';

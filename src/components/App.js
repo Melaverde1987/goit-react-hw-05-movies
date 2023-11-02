@@ -1,7 +1,7 @@
 import { Layout } from './Layout/Layout';
-import { Credits } from './Credits/Credits';
-import { Reviews } from './Reviews/Reviews';
-import { Route, Routes } from 'react-router-dom';
+//import { Credits } from './Credits/Credits';
+//import { Reviews } from './Reviews/Reviews';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
 //import HomePage from 'pages/HomePage';
@@ -12,7 +12,9 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('pages/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage'));
 const MovieDetailsPage = lazy(() => import('pages/MovieDetailsPage'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const Credits = lazy(() => import('./Credits/Credits'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+//const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -24,7 +26,7 @@ export const App = () => {
           <Route path="cast" element={<Credits />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
